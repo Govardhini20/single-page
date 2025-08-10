@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoodBoard</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .emoji-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin: 1rem 0;
+    }
+
+    .emoji {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .emoji:hover {
+      transform: scale(1.2);
+    }
+
+    #mood-display {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌈 MoodBoard</h1>
+    <p>How are you feeling today?</p>
+    <div class="emoji-buttons">
+      <button class="emoji" data-mood="😊">😊</button>
+      <button class="emoji" data-mood="😐">😐</button>
+      <button class="emoji" data-mood="😢">😢</button>
+      <button class="emoji" data-mood="😡">😡</button>
+      <button class="emoji" data-mood="😴">😴</button>
+    </div>
+    <div id="log">
+      <h2>Today's Mood:</h2>
+      <p id="mood-display">None selected</p>
+    </div>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.emoji');
+    const moodDisplay = document.getElementById('mood-display');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const mood = button.getAttribute('data-mood');
+        moodDisplay.textContent = mood;
+      });
+    });
+  </script>
+</body>
+</html>
